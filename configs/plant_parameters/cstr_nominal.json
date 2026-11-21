@@ -1,0 +1,32 @@
+
+{
+  "reactor": {
+    "volume": 1.0,
+    "density": 1000.0,
+    "heat_capacity": 4180.0
+  },
+  "jacket": {
+    "volume": 0.1,
+    "density": 1000.0,
+    "heat_capacity": 4180.0,
+    "inlet_temperature": 300.0
+  },
+  "feed": {
+    "flow_rate": 0.1,
+    "concentration": 1000.0,
+    "temperature": 350.0
+  },
+  "reaction": {
+    "pre_exponential_factor": 7.2e10,
+    "activation_energy_over_gas_constant": 8750.0,
+    "heat_of_reaction": -50000.0
+  },
+  "heat_transfer": {
+    "UA": 50000.0
+  },
+  "actuator": {
+    "nominal_coolant_flow": 0.1,
+    "minimum_coolant_flow": 0.02,
+    "maximum_coolant_flow": 0.5
+  }
+}
