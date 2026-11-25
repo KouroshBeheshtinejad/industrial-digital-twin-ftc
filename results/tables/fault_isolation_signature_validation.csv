@@ -1,0 +1,5 @@
+expected_class,predicted_class,correct,r_T,r_Tj,r_C,r_u
+Healthy,Healthy,True,-0.0001534948150553835,0.0,0.0,0.0
+Sensor Fault,Sensor Fault,True,2.00076097351783,0.0,0.0,0.0
+Actuator Fault,Actuator Fault,True,-0.9162219065410123,-15.132568572856725,3.5410891713585295,0.47235221644724257
+Model Mismatch,Model Mismatch,True,-0.3044821606780736,0.8373647693126652,1.2214720231062812,0.0

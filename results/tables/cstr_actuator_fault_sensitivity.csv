@@ -1,0 +1,4 @@
+stuck_flow_m3_min,detection_rate_percent,false_alarm_rate_percent,mean_detection_delay_min,std_detection_delay_min,detected_runs,total_runs
+0.4,100.0,0.0,8.188333333333336,0.25551952936137384,30,30
+0.45,100.0,0.0,8.028333333333336,0.22232444966656414,30,30
+0.5,100.0,0.0,7.898333333333336,0.21028852647687715,30,30

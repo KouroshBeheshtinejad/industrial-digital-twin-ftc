@@ -1,0 +1,2 @@
+final_temperature_K,final_error_K,maximum_temperature_K,minimum_temperature_K,maximum_coolant_flow,minimum_coolant_flow,IAE,ISE,actuator_within_limits
+355.9887061000741,0.011293899925874484,355.9887061000741,355.28373576,0.0784046331640004,0.04255037102228606,19.01891088163739,8.323615248208064,True
