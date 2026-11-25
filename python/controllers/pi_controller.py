@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+import math
 
 
 @dataclass
@@ -20,6 +21,17 @@ class PIController:
     integral_error: float = 0.0
 
     def __post_init__(self):
+        numeric_values = (
+            self.kp,
+            self.ki,
+            self.setpoint,
+            self.coolant_bias,
+            self.minimum_output,
+            self.maximum_output,
+        )
+        if not all(math.isfinite(float(value)) for value in numeric_values):
+            raise ValueError("Controller parameters must be finite numbers.")
+
         if self.kp < 0 or self.ki < 0:
             raise ValueError("Controller gains must be non-negative.")
 
@@ -51,11 +63,13 @@ class PIController:
             Coolant flow command (m^3/min).
         """
 
+        if not math.isfinite(float(sample_time)):
+            raise ValueError("Sample time must be finite.")
         if sample_time <= 0:
             raise ValueError("Sample time must be positive.")
 
-        if temperature != temperature:
-            raise ValueError("Temperature must be a valid number.")
+        if not math.isfinite(float(temperature)):
+            raise ValueError("Temperature must be a finite number.")
 
         error = self.setpoint - temperature
 
@@ -101,10 +115,19 @@ class PIController:
 
     def update_setpoint(self, new_setpoint):
         """Update the reactor temperature setpoint."""
-        self.setpoint = float(new_setpoint)
+        value = float(new_setpoint)
+        if not math.isfinite(value):
+            raise ValueError("Setpoint must be a finite number.")
+        self.setpoint = value
 
     def update_limits(self, minimum_output, maximum_output):
         """Update actuator output constraints."""
+
+        minimum_output = float(minimum_output)
+        maximum_output = float(maximum_output)
+
+        if not math.isfinite(minimum_output) or not math.isfinite(maximum_output):
+            raise ValueError("Actuator limits must be finite numbers.")
 
         if minimum_output >= maximum_output:
             raise ValueError(

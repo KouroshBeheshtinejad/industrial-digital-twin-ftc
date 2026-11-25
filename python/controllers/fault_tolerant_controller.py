@@ -1,6 +1,7 @@
 
 from dataclasses import dataclass
 from enum import Enum
+import math
 from typing import Optional
 
 from python.controllers.pi_controller import PIController
@@ -53,6 +54,12 @@ class FaultTolerantController:
 
         if sample_time <= 0:
             raise ValueError("sample_time must be positive.")
+        if not math.isfinite(float(sample_time)):
+            raise ValueError("sample_time must be finite.")
+        if not math.isfinite(float(measured_temperature)):
+            raise ValueError("measured_temperature must be finite.")
+        if not math.isfinite(float(estimated_temperature)):
+            raise ValueError("estimated_temperature must be finite.")
 
         if not fault_detected:
             self.mode = FTCMode.NORMAL
@@ -99,6 +106,21 @@ class FaultTolerantController:
                 message=(
                     "Sensor fault detected. "
                     "Controller uses estimated temperature."
+                ),
+            )
+
+        if normalized_fault == "sensor_and_actuator":
+            self.mode = FTCMode.SAFE_MODE
+            return FTCDecision(
+                mode=self.mode,
+                actuator_command=None,
+                control_temperature=estimated_temperature,
+                fault_detected=True,
+                control_authority_available=False,
+                message=(
+                    "Sensor and actuator faults detected. "
+                    "Safe mode is entered because the fault combination "
+                    "has no predefined reconfiguration."
                 ),
             )
 

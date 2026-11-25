@@ -1,0 +1,2 @@
+scenario,IAE,ISE,final_temperature_error_K,maximum_temperature_K,minimum_temperature_K,maximum_coolant_flow,minimum_coolant_flow,fault_detection_time_min,fault_detection_delay_min,false_alarms_before_fault,mode_normal_min,mode_sensor_reconfiguration_min,mode_actuator_reconfiguration_min,mode_safe_min,actuator_within_limits,detected_fault
+simultaneous_faults,67.51438401721305,66.44874421896722,1.2304959475871442,355.7343958783995,354.76950405241286,0.5,0.04538634443767407,30.25,0.25,0,30.200000000000003,0.05,0.0,49.800000000000004,True,sensor_and_actuator
